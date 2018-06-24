@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201806240255141_Initial.Designer.cs">
       <DependentUpon>201806240255141_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.cs" />
+    <Compile Include="Migrations\201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.Designer.cs">
+      <DependentUpon>201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -293,6 +297,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806240255141_Initial.resx">
       <DependentUpon>201806240255141_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.resx">
+      <DependentUpon>201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

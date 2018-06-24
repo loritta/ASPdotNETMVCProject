@@ -20,7 +20,9 @@ namespace ASPdotNETMVCProject.Controllers
         // GET: Garages
         public ActionResult Index()
         {
+           
             return View();
+           
         }
     }
 }

@@ -25,6 +25,8 @@ namespace ASPdotNETMVCProject.Models
         {
         }
 
+        public object Garages { get; internal set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
