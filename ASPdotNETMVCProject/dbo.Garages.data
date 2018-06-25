@@ -1,0 +1,3 @@
+﻿SET IDENTITY_INSERT [dbo].[Garages] ON
+INSERT INTO [dbo].[Garages] ([ID], [Name], [Address], [PhoneNumber]) VALUES (1, N'AutoParts', N'32, rue Galt, Montreal, QC, H4e2T3', 5143856857)
+SET IDENTITY_INSERT [dbo].[Garages] OFF

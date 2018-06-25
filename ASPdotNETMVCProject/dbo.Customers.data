@@ -1,0 +1,3 @@
+﻿SET IDENTITY_INSERT [dbo].[Customers] ON
+INSERT INTO [dbo].[Customers] ([ID], [FirstName], [LastName], [Address], [PhoneNumber]) VALUES (1, N'John', N'Doe', N'243 boul. Lasalle, Montreal, QC, H4G3S2', 5143654738)
+SET IDENTITY_INSERT [dbo].[Customers] OFF

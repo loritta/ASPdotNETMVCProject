@@ -21,7 +21,7 @@ namespace ASPdotNETMVCProject.Controllers
         public ActionResult Index()
         {
             var service = new Service();
-            return View();
+            return View(service);
         }
     }
 }
