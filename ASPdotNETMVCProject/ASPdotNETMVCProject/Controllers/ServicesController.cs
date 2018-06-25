@@ -20,6 +20,7 @@ namespace ASPdotNETMVCProject.Controllers
         // GET: Services
         public ActionResult Index()
         {
+            var service = new Service();
             return View();
         }
     }
