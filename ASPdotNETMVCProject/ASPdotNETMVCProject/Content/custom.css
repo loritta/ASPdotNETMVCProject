@@ -1,0 +1,19 @@
+.navbar {
+    background: linear-gradient(to right, #16222a, #3a6073);
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.jumbotron h1 {
+    text-align: center;
+}
+
+.jumbotron p {
+    text-align: center;
+}
