@@ -1,3 +1,7 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .navbar {
     background: linear-gradient(to right, #16222a, #3a6073);
 }
@@ -15,5 +19,16 @@
 }
 
 .jumbotron p {
+    text-align: center;
+}
+
+.custom-footer {
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to right, #16222a, #3a6073);
+    color: white;
     text-align: center;
 }
