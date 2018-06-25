@@ -20,13 +20,18 @@ namespace ASPdotNETMVCProject.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Garage> Garages { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public object Garages { get; internal set; }
-
+        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

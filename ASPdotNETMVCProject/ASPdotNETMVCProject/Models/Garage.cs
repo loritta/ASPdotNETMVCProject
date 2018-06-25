@@ -21,12 +21,12 @@ namespace ASPdotNETMVCProject.Models
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Please enter the Garage's phone.")]
-        [StringLength(50)]
-        [Display(Name = "Garage Address")]
+        [Range(0, long.MaxValue, ErrorMessage = "Please enter valid number")]
+        [Display(Name = "Phone Number")]
         public long PhoneNumber { get; set; }
 
         public List<Service> ListOfServices { get; set; }
-        
+        //public int ServiceID { get; set; }
 
     }
 }

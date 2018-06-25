@@ -12,6 +12,8 @@ namespace ASPdotNETMVCProject.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public long PhoneNumber { get; set; }
-        //public int UserNameID { get; set; }
+        //public  AspNetUser AspNetUser { get; set; }
+        //public byte Id { get; set; }
+
     }
 }
