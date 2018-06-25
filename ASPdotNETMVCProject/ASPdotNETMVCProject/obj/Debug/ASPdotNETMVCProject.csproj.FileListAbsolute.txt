@@ -121,8 +121,6 @@ E:\John Abbott College\ASP_Project\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdo
 E:\John Abbott College\ASP_Project\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.Initial.resources
 E:\John Abbott College\ASP_Project\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.GenerateResource.cache
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csprojResolveAssemblyReference.cache
-B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.Initial.resources
-B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.GenerateResource.cache
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CoreCompileInputs.cache
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ApplicationInsights.config
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ASPdotNETMVCProject.dll.config
@@ -242,7 +240,6 @@ B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.pdb
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\EntityFramework.dll
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\EntityFramework.SqlServer.dll
-B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.RequiredFieldsListUpdateInTransactionsAndGarages.resources
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ApplicationInsights.config
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ASPdotNETMVCProject.dll.config
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ASPdotNETMVCProject.dll
@@ -495,6 +492,5 @@ C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdot
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CopyComplete
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.dll
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.pdb
-B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.PopulateCustomer.resources
-B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.PopulateFieldsCustomer.resources
-B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.AddListServicesInGarage.resources
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.Initial.resources
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.GenerateResource.cache

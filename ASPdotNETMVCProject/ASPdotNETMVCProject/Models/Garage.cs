@@ -25,8 +25,8 @@ namespace ASPdotNETMVCProject.Models
         [Display(Name = "Phone Number")]
         public long PhoneNumber { get; set; }
 
-        public List<Service> ListOfServices { get; set; }
-        //public int ServiceID { get; set; }
+        public ICollection<GarageServices> GarageServices { get; set; }
+
 
     }
 }

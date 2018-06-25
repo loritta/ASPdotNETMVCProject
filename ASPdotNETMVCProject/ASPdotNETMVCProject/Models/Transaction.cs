@@ -10,12 +10,9 @@ namespace ASPdotNETMVCProject.Models
     {
         public int ID { get; set; }
 
-        public List<Service> ListOfServices { get; set; }
-
-
         //this has to come automatically based on the user login for the customer 
         //and as a dropdown for the garage
-
+        public ICollection<TransactionServices> TransactionServices { get; set; }
 
         [Required(ErrorMessage = "Please enter the Customer's name.")]
         [StringLength(200)]
@@ -25,6 +22,7 @@ namespace ASPdotNETMVCProject.Models
 
         //this has to come automatically based on the garage logged in for the garage 
         //and as a dropdown for the customer
+
 
         [Required(ErrorMessage = "Please enter the Garage's name.")]
         [StringLength(200)]

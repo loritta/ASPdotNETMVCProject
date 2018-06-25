@@ -189,43 +189,23 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CustomersController.cs" />
-    <Compile Include="Controllers\GaragesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806240255141_Initial.cs" />
-    <Compile Include="Migrations\201806240255141_Initial.Designer.cs">
-      <DependentUpon>201806240255141_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.cs" />
-    <Compile Include="Migrations\201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.Designer.cs">
-      <DependentUpon>201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806241908310_PopulateCustomer.cs" />
-    <Compile Include="Migrations\201806241908310_PopulateCustomer.Designer.cs">
-      <DependentUpon>201806241908310_PopulateCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806241909533_PopulateFieldsCustomer.cs" />
-    <Compile Include="Migrations\201806241909533_PopulateFieldsCustomer.Designer.cs">
-      <DependentUpon>201806241909533_PopulateFieldsCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806242130317_AddListServicesInGarage.cs" />
-    <Compile Include="Migrations\201806242130317_AddListServicesInGarage.Designer.cs">
-      <DependentUpon>201806242130317_AddListServicesInGarage.cs</DependentUpon>
+    <Compile Include="Migrations\201806251847174_Initial.cs" />
+    <Compile Include="Migrations\201806251847174_Initial.Designer.cs">
+      <DependentUpon>201806251847174_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Garage.cs" />
+    <Compile Include="Models\GarageServices.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -316,20 +296,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806240255141_Initial.resx">
-      <DependentUpon>201806240255141_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.resx">
-      <DependentUpon>201806241833112_RequiredFieldsListUpdateInTransactionsAndGarages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806241908310_PopulateCustomer.resx">
-      <DependentUpon>201806241908310_PopulateCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806241909533_PopulateFieldsCustomer.resx">
-      <DependentUpon>201806241909533_PopulateFieldsCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806242130317_AddListServicesInGarage.resx">
-      <DependentUpon>201806242130317_AddListServicesInGarage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806251847174_Initial.resx">
+      <DependentUpon>201806251847174_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
