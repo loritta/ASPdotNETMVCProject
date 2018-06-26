@@ -486,3 +486,4 @@ C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdot
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.pdb
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.Initial.resources
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.GenerateResource.cache
+E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.DBcontext.resources

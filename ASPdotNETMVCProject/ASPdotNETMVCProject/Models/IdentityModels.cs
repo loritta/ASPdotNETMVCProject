@@ -24,7 +24,8 @@ namespace ASPdotNETMVCProject.Models
         public DbSet<Garage> Garages { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-
+        public DbSet<TransactionServices> TransactionServices { get; set; }
+        public DbSet<GarageServices> GarageServices { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

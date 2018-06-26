@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASPdotNETMVCProject.Models;
+using ASPdotNETMVCProject.ViewModels;
 
 namespace ASPdotNETMVCProject.Controllers
 {
@@ -71,31 +72,37 @@ namespace ASPdotNETMVCProject.Controllers
             else
                 return View(garage);
         }
+        public ActionResult ListOfServices(int id)
+        {
+            var viewModel = new ServicesInGarageViewModel()
+            {
+                Garage = _context.Garages.SingleOrDefault(c => c.ID == id),
+                Services = (from data in _context.Garages
+                            join data2 in _context.GarageServices on data.ID equals data2.GarageID
+                            join data3 in _context.Services on data2.ServiceID equals data3.ID
+                            where data.ID == id
+                            select data3).ToList()
 
+            };
+
+            return View(viewModel);
+
+        }
         [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
         public ActionResult New()
         {
 
-            var garage = new Garage()
+            var viewModel = new ServicesInGarageViewModel()
             {
-                Name = "",
-                Address = "",
-                PhoneNumber = 0
-                /* ListOfServices = new List<Service>
-                 {
-                     new Service
-                     {
-                         Title = "Oil Change",
-                     Description="Some description, cost=70.00"
-                     },
-                     new Service
-                     {
-                         Title ="Suspension Check",Description="Some description, cost=100.00"
-                     }
-                 }*/
+                Garage = new Garage(),
+                Services = (from data in _context.Garages
+                            join data2 in _context.GarageServices on data.ID equals data2.GarageID
+                            join data3 in _context.Services on data2.ServiceID equals data3.ID
+                            select data3).ToList()
+
             };
 
-            return View("GarageForm", garage);
+            return View("GarageForm", viewModel);
         }
         [Authorize(Roles = RoleNames.Administrator)]
         [HttpPost]
@@ -125,7 +132,7 @@ namespace ASPdotNETMVCProject.Controllers
                 garageInDB.Name = garage.Name;
                 garageInDB.Address = garage.Address;
                 garageInDB.PhoneNumber = garage.PhoneNumber;
-                //garageInDB.ListOfServices = garage.ListOfServices;
+                
 
 
             }
@@ -142,7 +149,7 @@ namespace ASPdotNETMVCProject.Controllers
             if (garageInDB == null)
                 return HttpNotFound();
 
-            return View("CustomerForm", garageInDB);
+            return View("GarageForm", garageInDB);
         }
 
         [Authorize(Roles = RoleNames.Administrator)]
