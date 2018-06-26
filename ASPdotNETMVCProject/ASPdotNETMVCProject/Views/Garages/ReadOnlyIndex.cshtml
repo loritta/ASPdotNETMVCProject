@@ -33,11 +33,11 @@
 		using (Html.BeginForm("Index", "Garages", FormMethod.Get))
 		{
 			<p>
-				Find Customer by name: @Html.TextBox("SearchString")
+				Find Garage by name: @Html.TextBox("SearchString")
 				<input type="submit" value="Search" />
 			</p>
 		}
-		@foreach (var item in Model)
+		foreach (var item in Model)
 		{
 			<tr>
 				<td>

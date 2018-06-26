@@ -287,6 +287,8 @@
     <Content Include="Views\Customers\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Garages\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Services\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Customers\ReadOnlyDetails.cshtml" />
+    <Content Include="Views\Garages\ReadOnlyDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -62,13 +62,17 @@ namespace ASPdotNETMVCProject.Controllers
         }
         public ActionResult Details(int id)
         {
-
+            string view = "ReadOnlyDetails";
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                view = "Details";
+            }
             var customer = _context.Customers.               
                 SingleOrDefault(c => c.ID == id);
             if (customer == null)
                 return HttpNotFound();
             else
-                return View(customer);
+                return View(view,customer);
         }
         [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
         public ActionResult New()

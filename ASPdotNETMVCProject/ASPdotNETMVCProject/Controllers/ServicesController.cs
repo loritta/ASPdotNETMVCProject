@@ -52,5 +52,19 @@ namespace ASPdotNETMVCProject.Controllers
             return View(view, services);
             
         }
+        public ActionResult Details(int id)
+        {
+            string view = "ReadOnlyDetails";
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                view = "Details";
+            }
+            var services = _context.Services.
+                SingleOrDefault(c => c.ID == id);
+            if (services == null)
+                return HttpNotFound();
+            else
+                return View(view, services);
+        }
     }
 }
