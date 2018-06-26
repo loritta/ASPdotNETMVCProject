@@ -483,10 +483,6 @@ C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdot
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\Microsoft.AI.Web.xml
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csprojAssemblyReference.cache
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.Initial.resources
-C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.RequiredFieldsListUpdateInTransactionsAndGarages.resources
-C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.PopulateCustomer.resources
-C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.PopulateFieldsCustomer.resources
-C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.AddListServicesInGarage.resources
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.GenerateResource.cache
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CoreCompileInputs.cache
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CopyComplete
