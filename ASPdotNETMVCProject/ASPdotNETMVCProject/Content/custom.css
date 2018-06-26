@@ -6,6 +6,25 @@ a {
     color: #365266;
 }
 
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
 .navbar {
     background: linear-gradient(to right, #16222a, #3a6073);
 }
@@ -50,3 +69,9 @@ a {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+.btn-primary {
+    background-color: #51789a;
+    border-color: #4b6479;
+}
+
