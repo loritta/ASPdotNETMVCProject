@@ -19,10 +19,38 @@ namespace ASPdotNETMVCProject.Controllers
         }
         // GET: Services
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string SearchString, string sort)
         {
-            var service = new Service();
-            return View(service);
+            string view = "ReadOnlyIndex";
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                view = "Index";
+            }
+            var services = _context.Services.ToList();
+            ViewBag.SortByName = string.IsNullOrEmpty(sort) ? "name_desc" : "";
+            
+            if (!string.IsNullOrWhiteSpace(SearchString))
+            {
+                /* LINQ Code
+                customers = (from c in customers
+                             where c.Name.Contains(SearchString)
+                             select c);*/
+                services = services.Where(c => c.Title.Contains(SearchString)).ToList();
+                ViewBag.search = SearchString;
+            }
+
+            switch (sort)
+            {
+                case "name_desc":
+                    services = services.OrderByDescending(c => c.Title).ToList();
+                    break;
+                default:
+                    services = services.OrderBy(c => c.Title).ToList();
+                    break;
+            }
+
+            return View(view, services);
+            
         }
     }
 }
