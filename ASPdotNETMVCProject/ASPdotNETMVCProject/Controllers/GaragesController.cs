@@ -17,13 +17,50 @@ namespace ASPdotNETMVCProject.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
+        [AllowAnonymous]
         // GET: Garages
-        public ActionResult Index()
+        public ActionResult Index(string SearchString, string sort)
         {
+            string view = "ReadOnlyIndex";
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                view = "Index";
+            }
             var garages = _context.Garages.ToList();
-            return View(garages);
+
+            ViewBag.SortByName = string.IsNullOrEmpty(sort) ? "name_desc" : "";
+            ViewBag.SortbyAddress = sort == "address" ? "address_desc" : "address";
+
+            if (!string.IsNullOrWhiteSpace(SearchString))
+            {
+                /* LINQ Code
+                customers = (from c in customers
+                             where c.Name.Contains(SearchString)
+                             select c);*/
+                garages = garages.Where(c => c.Name.Contains(SearchString)).ToList();
+                ViewBag.search = SearchString;
+            }
+
+            switch (sort)
+            {
+                case "name_desc":
+                    garages = garages.OrderByDescending(c => c.Name).ToList();
+                    break;
+                case "adress":
+                    garages = garages.OrderBy(c => c.Address).ToList();
+                    break;
+                case "adress_desc":
+                    garages = garages.OrderByDescending(c => c.Address).ToList();
+                    break;
+                default:
+                    garages = garages.OrderBy(c => c.Name).ToList();
+                    break;
+            }
+            return View(view,garages);
 
         }
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
 
@@ -34,6 +71,8 @@ namespace ASPdotNETMVCProject.Controllers
             else
                 return View(garage);
         }
+
+        [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
         public ActionResult New()
         {
 
@@ -58,6 +97,7 @@ namespace ASPdotNETMVCProject.Controllers
 
             return View("GarageForm", garage);
         }
+        [Authorize(Roles = RoleNames.Administrator)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Garage garage)
@@ -93,33 +133,37 @@ namespace ASPdotNETMVCProject.Controllers
 
             return RedirectToAction("Index", "Garages");
         }
+
+        [Authorize(Roles = RoleNames.Administrator)]
         public ActionResult Edit(int Id)
         {
-            var customerInDB = _context.Customers.SingleOrDefault(c => c.ID == Id);
+            var garageInDB = _context.Garages.SingleOrDefault(c => c.ID == Id);
 
-            if (customerInDB == null)
+            if (garageInDB == null)
                 return HttpNotFound();
 
-            return View("CustomerForm", customerInDB);
+            return View("CustomerForm", garageInDB);
         }
 
+        [Authorize(Roles = RoleNames.Administrator)]
         //[Authorize(Roles = RoleNames.CanManageMedia)]
         public ActionResult Delete(int? id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.ID == id);
+            var garage = _context.Garages.SingleOrDefault(c => c.ID == id);
 
-            if (customer == null)
+            if (garage == null)
                 return HttpNotFound();
 
-            return View(customer);
+            return View(garage);
         }
 
+        [Authorize(Roles = RoleNames.Administrator)]
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var customerInDB = _context.Customers.Find(id);
+            var garageInDB = _context.Garages.Find(id);
 
-            _context.Customers.Remove(customerInDB);
+            _context.Garages.Remove(garageInDB);
             _context.SaveChanges();
 
             return RedirectToAction("Index");

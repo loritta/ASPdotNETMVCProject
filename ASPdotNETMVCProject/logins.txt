@@ -1,0 +1,6 @@
+admin@cars.com
+Admin@123
+garage@cars.com
+Garage@123
+customer@cars.com
+Customer@123

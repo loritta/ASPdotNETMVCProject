@@ -18,6 +18,7 @@ namespace ASPdotNETMVCProject.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: Services
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var service = new Service();

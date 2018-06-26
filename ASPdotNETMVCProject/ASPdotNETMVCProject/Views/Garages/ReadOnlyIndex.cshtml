@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ASPdotNETMVCProject.Models.Garage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Garages in our System</h2>
+
+<p>
+    @Html.ActionLink("New Garage", "New", "Garages", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+	<tr>
+	<thead>
+		<tr>
+			<th>@Html.ActionLink("Garage's Name", "Index", "Garages", new { sort = "name", SearchString = ViewBag.search }, null)</th>
+			<th>@Html.ActionLink("Garage's Address", "Index", "Garages", new { sort = "address", SearchString = ViewBag.search }, null)</th>
+			<th>
+				@Html.DisplayNameFor(model => model.PhoneNumber)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	@if (!Model.Any())
+	{
+		<tr>There are no customers available.</tr>
+	}
+	else
+	{
+
+		using (Html.BeginForm("Index", "Garages", FormMethod.Get))
+		{
+			<p>
+				Find Customer by name: @Html.TextBox("SearchString")
+				<input type="submit" value="Search" />
+			</p>
+		}
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PhoneNumber)
+				</td>
+				<td>
+
+					@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+
+				</td>
+			</tr>
+		}
+	}
+
+	</table>

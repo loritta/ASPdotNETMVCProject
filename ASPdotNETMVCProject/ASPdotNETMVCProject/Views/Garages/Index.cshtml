@@ -11,36 +11,52 @@
     @Html.ActionLink("New Garage", "New", "Garages", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+	<thead>
+		<tr>
+			<th>@Html.ActionLink("Garage's Name", "Index", "Garages", new { sort = "name", SearchString = ViewBag.search }, null)</th>
+			<th>@Html.ActionLink("Garage's Address", "Index", "Garages", new { sort = "address", SearchString = ViewBag.search }, null)</th>
+			<th>
+				@Html.DisplayNameFor(model => model.PhoneNumber)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+	@if (!Model.Any())
+	{
+		<tr>There are no customers available.</tr>
+	}
+	else
+	{
 
-</table>
+		using (Html.BeginForm("Index", "Garages", FormMethod.Get))
+		{
+			<p>
+				Find Garage by name: @Html.TextBox("SearchString")
+				<input type="submit" value="Search" />
+			</p>
+		}
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PhoneNumber)
+				</td>
+				<td>
+				
+					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+					@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+				</td>
+			</tr>
+		}
+	}
+
+	</table>
