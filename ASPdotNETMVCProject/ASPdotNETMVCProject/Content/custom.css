@@ -2,6 +2,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+a {
+    color: #365266;
+}
+
 .navbar {
     background: linear-gradient(to right, #16222a, #3a6073);
 }
