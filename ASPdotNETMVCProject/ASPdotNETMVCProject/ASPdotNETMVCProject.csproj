@@ -295,6 +295,7 @@
     <Content Include="Views\Customers\ReadOnlyDetails.cshtml" />
     <Content Include="Views\Garages\ReadOnlyDetails.cshtml" />
     <Content Include="Views\Garages\ListOfServices.cshtml" />
+    <Content Include="Views\Garages\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
