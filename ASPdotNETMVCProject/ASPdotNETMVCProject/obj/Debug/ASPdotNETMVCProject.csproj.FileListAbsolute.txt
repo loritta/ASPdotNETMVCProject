@@ -357,15 +357,11 @@ E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\Mi
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\Microsoft.AI.Web.xml
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csprojResolveAssemblyReference.cache
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.Initial.resources
-E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.RequiredFieldsListUpdateInTransactionsAndGarages.resources
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.GenerateResource.cache
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CoreCompileInputs.cache
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CopyComplete
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.dll
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.pdb
-E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.PopulateCustomer.resources
-E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.PopulateFieldsCustomer.resources
-E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.AddListServicesInGarage.resources
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ApplicationInsights.config
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ASPdotNETMVCProject.dll.config
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\bin\ASPdotNETMVCProject.dll
