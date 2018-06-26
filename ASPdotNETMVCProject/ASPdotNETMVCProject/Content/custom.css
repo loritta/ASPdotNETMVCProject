@@ -14,13 +14,17 @@ body {
     color: #fff;
 }
 
-.jumbotron h1 {
-    text-align: center;
+.jumbotron {
+    background-color: transparent;
 }
 
-.jumbotron p {
-    text-align: center;
-}
+    .jumbotron h1 {
+        text-align: center;
+    }
+
+    .jumbotron p {
+        text-align: center;
+    }
 
 .custom-footer {
     padding: 10px 0;
