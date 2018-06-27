@@ -1,9 +1,9 @@
 Bugs to fix:
 
 *When adding customer the new view comes in effect only after you log out and log in
-*Need to get the customerId for the current user
+*Need to get the customerId for the current user --- will be possible thorough the FK in customers
 *Custom form editing for customer
-*Connect user Id with the customer
+*Connect user Id with the customer----created a Fk to User in Identity
 *Services search ridirects to customers?!!!!????! ---- fixed
 
 To do:

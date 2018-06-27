@@ -613,3 +613,4 @@ D:\Larisa S\ASPdotNETProject\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMV
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.DBcontext.resources
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToCustomers.resources
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToPhoneInCustomersAndGarage.resources
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.FKInCustomersAndGaragesToApplicationUser.resources

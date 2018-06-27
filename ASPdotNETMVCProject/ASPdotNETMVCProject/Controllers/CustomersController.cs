@@ -25,23 +25,20 @@ namespace ASPdotNETMVCProject.Controllers
         {
             var customers = _context.Customers.ToList();
             //Check for user
-            string view = "ReadOnlyIndex";
+            string view = "ReadOnlyIndexUser";
             if (User.IsInRole(RoleNames.Administrator))
             {
                 view = "Index";
             }
             else if (User.IsInRole(RoleNames.Customer))
             {
-                //customers = _context.Customers.Where(c=>c.ID ==)
-                return View("CustomerForm");
+                view ="CustomerForm";
             }
             else if (User.IsInRole(RoleNames.GarageOwner))
             {
                 //we need to create a custom viewmodel
             }
 
-
-           
 
             //saving the search to view
             ViewBag.SortByName = string.IsNullOrEmpty(sort) ? "first_name_desc" : "";
@@ -110,9 +107,13 @@ namespace ASPdotNETMVCProject.Controllers
             {
                 return View("AlreadyInRole");
             }
-            else
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
             {
                 return View("CustomerForm", customer);
+            }
+            else
+            {
+                return View("CustomerFormUser", customer);
             }
 
         }
@@ -122,7 +123,7 @@ namespace ASPdotNETMVCProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
-
+            Security security = new Security();
             if (!ModelState.IsValid)
             {
 
@@ -135,10 +136,37 @@ namespace ASPdotNETMVCProject.Controllers
             //******** Come here if form is valid
             if (customer.ID == 0)
             {
-                Security security = new Security();
-                security.AddUserToRole(User.Identity.GetUserName(), RoleNames.Customer);
-                _context.Customers.Add(customer);
+                if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+                {
+                    //a customer cannot be a garage in the same time
+                    //if not registered then
+                    if (_context.Customers.Where(c => c.ApplicationUserId == customer.ApplicationUserId) == null
+                        ||
+                        _context.Garages.Where(c => c.ApplicationUserId == customer.ApplicationUserId)==null)
+                    {
+                        security.AddUserToRole(customer.ApplicationUserId, RoleNames.Customer);
+                        _context.Customers.Add(customer);
+                    }
+                    //if there is no userID on the file matching ther one returned from the form
+                    else if(_context.Users.Where(u=>u.Id == customer.ApplicationUserId) == null)
+                    {
+                        return View("NeedToRegisterBefore");
+                    }
+                    //if it's a user not registered as cutomer/admin/garage
+                    else if(_context.Users.Where(u=>u.Id == User.Identity.GetUserId())!=null && !User.IsInRole(RoleNames.AdministratorGarageOwnerCustomer))
+                    {
+                        security.AddUserToRole(User.Identity.GetUserId(), RoleNames.Customer);
+                        _context.Customers.Add(customer);
+                    }
+                    //there is a user with this UserID in the customers or garage role
+                    else
+                    {
+                        return View("AlreadyInRoleGeneral");
+                    }
+                }
+                 
             }
+            //needs to be finished
             else
             {
                 var customerInDB = _context.Customers.Single(c => c.ID == customer.ID);
@@ -148,8 +176,12 @@ namespace ASPdotNETMVCProject.Controllers
                 customerInDB.LastName = customer.LastName;
                 customerInDB.Address = customer.Address;
                 customerInDB.PhoneNumber = customer.PhoneNumber;
-                Security security = new Security();
-                security.AddUserToRole(User.Identity.GetUserName(), RoleNames.Customer);
+                if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+                {
+                    customerInDB.ApplicationUserId = User.Identity.GetUserId();
+                    security.AddUserToRole(User.Identity.GetUserName(), RoleNames.Customer);
+                }
+
             }
 
             _context.SaveChanges();
@@ -164,10 +196,14 @@ namespace ASPdotNETMVCProject.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = RoleNames.AdministratorGarageOwnerCustomer)]
         public ActionResult Edit(int Id)
         {
-            var customerInDB = _context.Customers.SingleOrDefault(c => c.ID == Id);
+            var customerInDB = _context.Customers.SingleOrDefault(c => c.ApplicationUserId == User.Identity.GetUserId());
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                customerInDB = _context.Customers.SingleOrDefault(c => c.ID == Id);
+            }
 
             if (customerInDB == null)
                 return HttpNotFound();

@@ -12,12 +12,7 @@
 	<tr>
 		<th>@Html.ActionLink("Customer's First Name", "Index", "Customers", new { sort = "firts_name", SearchString = ViewBag.search }, null)</th>
 		<th>@Html.ActionLink("Customer's Last Name", "Index", "Customers", new { sort = "last_name", SearchString = ViewBag.search }, null)</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Address)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.PhoneNumber)
-		</th>
+		
 		<th></th>
 	</tr>
 	@if (!Model.Any())
@@ -44,12 +39,7 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.LastName)
 				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Address)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.PhoneNumber)
-				</td>
+				
 				<td>
 
 					@Html.ActionLink("Details", "Details", new { id = item.ID }) 

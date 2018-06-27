@@ -31,5 +31,9 @@ namespace ASPdotNETMVCProject.Models
         //public  AspNetUser AspNetUser { get; set; }
         //public byte Id { get; set; }
 
+        public ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUserId { get; set; }
+
+
     }
 }

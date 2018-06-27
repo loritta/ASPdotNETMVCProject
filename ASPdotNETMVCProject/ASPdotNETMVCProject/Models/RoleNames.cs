@@ -11,6 +11,7 @@ namespace ASPdotNETMVCProject.Models
         public const string Customer = "CanManageCustomerInfo";
         public const string Administrator = "CanManageTheWebSite";
         public const string AdministratorGarageOwner = "CanManageTheWebSite, CanManageGarageInfo";
+        public const string AdministratorGarageOwnerCustomer = "CanManageTheWebSite, CanManageGarageInfo, CanManageCustomerInfo";
 
     }
 }

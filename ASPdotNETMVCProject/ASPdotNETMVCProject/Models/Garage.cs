@@ -27,6 +27,7 @@ namespace ASPdotNETMVCProject.Models
 
         public ICollection<GarageServices> GarageServices { get; set; }
 
-
+        public ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUserId { get; set; }
     }
 }
