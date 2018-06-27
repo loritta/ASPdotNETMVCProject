@@ -1,28 +1,32 @@
 Non authorized can ===>
-
+ ALL IS SET, NEED TO VERIFY THE AUTHORIZATION FOR ACTIONS NOT IN THE NAVBAR
 *Search a garage information and see details
 *See the services offered
 *See the review for the service and the ranking
 
-User can ===>
-***Upon login he has a page that askes him if 
-he would like to add himself as a customer or a garage
 
+User can ===>
+WORKING ON ADD CUSTOMER PART NEED TO GO TO THE ADD GARAGE
+PART NEED TO VERIFY THE AUTHORIZATION FOR ACTIONS NOT IN THE NAVBAR 
+AND OVERALL FUNCTIONING
+THE CACHE WAS NOT FIXED THE USER NEEDS TO LOG OUT AFTER REGISTERING HIMSELF
+AS A GARAGE OR CUSTOMER SO IT CAN GET IN EFFECT
+***Upon login he has additonal buttons on nav to add himself
+a customer or a garage
 *What the unauthorized can +
 *Add a new customer file(only once and only for himself)
 or a new garage file(only once and only for himself)
-then he becomes a customer/garage(subject to admin approval)
+then he becomes a customer/garage
 
 Customer can ===>
 *What the unauthorized can +
 *Add reviews to services he ordered 
 at garages he was served at
-*Modify personal information
+*Modify personal information - working on it
 *Request services booking
 *Communicate privately with the garage = see messaging
 *See previous transactions
-*Add a new customer file(if the user exist) by finding the login infor 
-and connecting to the customer info then he becomes a customer
+
 
 Garage owner can ===>
 
@@ -35,7 +39,8 @@ Garage owner can ===>
 *Initialize a trasaction with the customer he can choose(customer has to be in the system)
 *Search customer names(without personal info)
 *See previous transactions with his customers
-*Add new customer
+*Add a new customer file(if the user exist) by finding the login info 
+and connecting to the customer info then the login provided becomes a customer
 *See appointement requests
 
 Admin can ===>

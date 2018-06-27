@@ -72,13 +72,17 @@ namespace ASPdotNETMVCProject.Controllers
         [AllowAnonymous]
         public ActionResult Details(int id)
         {
-
+            string view = "ReadOnlyDetails";
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                view = "Details";
+            }
             var garage = _context.Garages.
                 SingleOrDefault(c => c.ID == id);
             if (garage == null)
                 return HttpNotFound();
             else
-                return View(garage);
+                return View(view,garage);
         }
         public ActionResult ListOfServices(int id)
         {
