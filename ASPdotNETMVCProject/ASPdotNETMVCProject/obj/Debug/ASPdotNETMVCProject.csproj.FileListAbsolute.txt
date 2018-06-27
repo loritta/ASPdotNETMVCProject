@@ -610,3 +610,6 @@ D:\Larisa S\ASPdotNETProject\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMV
 D:\Larisa S\ASPdotNETProject\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.csproj.CopyComplete
 D:\Larisa S\ASPdotNETProject\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.dll
 D:\Larisa S\ASPdotNETProject\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.pdb
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.DBcontext.resources
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToCustomers.resources
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToPhoneInCustomersAndGarage.resources

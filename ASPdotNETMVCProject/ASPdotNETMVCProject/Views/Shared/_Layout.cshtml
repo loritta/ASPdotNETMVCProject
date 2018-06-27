@@ -9,37 +9,34 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Car Service Ligament", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					
-					<li>@Html.ActionLink("Garages", "Index", "Garages")</li>
-					<li>@Html.ActionLink("Services", "Index", "Services")</li>
-					<li>@Html.ActionLink("Customers", "Index", "Customers")</li>
-				</ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer class="custom-footer">
-			<p>&copy; @DateTime.Now.Year - Car Service Ligament by Larisa, Dmitrii, Matthew</p>
-        </footer>
-    </div>
+	@if (this.User.IsInRole("CanManageTheWebSite") || this.User.IsInRole("CanManageGarageInfo"))
+	{
+		@Html.Partial("_Nav");
+	}
+	else if (!this.User.Identity.IsAuthenticated)
+	{
+		@Html.Partial("_NavNonUser");
+	}
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+	else if (this.User.IsInRole("CanManageCustomerInfo"))
+	{
+		@Html.Partial("_NavCustomer");
+	}
+	else
+	{
+		@Html.Partial("_NavUser");
+	}
+
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer class="custom-footer">
+			<p>&copy; @DateTime.Now.Year - Car Service Ligament by Larisa, Dmitrii, Matthew</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
 </body>
 </html>

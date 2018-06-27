@@ -31,11 +31,16 @@ namespace ASPdotNETMVCProject.Controllers
             
             if (!string.IsNullOrWhiteSpace(SearchString))
             {
-                /* LINQ Code
-                customers = (from c in customers
-                             where c.Name.Contains(SearchString)
-                             select c);*/
-                services = services.Where(c => c.Title.Contains(SearchString)).ToList();
+                
+                var searchTerms = SearchString.ToLower().Split(null);
+
+                foreach (var term in searchTerms)
+                {
+                    string tmpTerm = term;
+                    services = services.Where(s => s.Title.ToLower().Contains(SearchString) || 
+                    s.Description.ToLower().Contains(SearchString)).ToList();
+                  
+                }         
                 ViewBag.search = SearchString;
             }
 

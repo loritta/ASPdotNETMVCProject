@@ -21,7 +21,7 @@ namespace ASPdotNETMVCProject.Models
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Please enter the Garage's phone.")]
-        [Range(0, long.MaxValue, ErrorMessage = "Please enter valid number")]
+       
         [Display(Name = "Phone Number")]
         public long PhoneNumber { get; set; }
 

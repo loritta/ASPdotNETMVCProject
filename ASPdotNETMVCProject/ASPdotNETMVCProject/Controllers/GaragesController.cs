@@ -39,9 +39,17 @@ namespace ASPdotNETMVCProject.Controllers
                 customers = (from c in customers
                              where c.Name.Contains(SearchString)
                              select c);*/
-                garages = garages.Where(c => c.Name.Contains(SearchString)).ToList();
+                var searchTerms = SearchString.ToLower().Split(null);
+
+                foreach (var term in searchTerms)
+                {
+                    string tmpTerm = term;
+                    garages = garages.Where(c => c.Name.ToLower().Contains(SearchString)).ToList();
+
+                }
                 ViewBag.search = SearchString;
             }
+           
 
             switch (sort)
             {

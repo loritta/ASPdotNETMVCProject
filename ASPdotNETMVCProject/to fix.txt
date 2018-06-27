@@ -1,0 +1,11 @@
+Bugs to fix:
+
+*When adding customer the new view comes in effect only after you log out and log in
+*Need to get the customerId for the current user
+*Custom form editing for customer
+*Connect user Id with the customer
+*Services search ridirects to customers?!!!!????! ---- fixed
+
+To do:
+
+creat a custome view for the customers of a specific garage ---> called in customers controller Index action

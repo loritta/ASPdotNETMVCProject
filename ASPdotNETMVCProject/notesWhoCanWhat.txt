@@ -1,0 +1,49 @@
+Non authorized can ===>
+
+*Search a garage information and see details
+*See the services offered
+*See the review for the service and the ranking
+
+User can ===>
+***Upon login he has a page that askes him if 
+he would like to add himself as a customer or a garage
+
+*What the unauthorized can +
+*Add a new customer file(only once and only for himself)
+or a new garage file(only once and only for himself)
+then he becomes a customer/garage(subject to admin approval)
+
+Customer can ===>
+*What the unauthorized can +
+*Add reviews to services he ordered 
+at garages he was served at
+*Modify personal information
+*Request services booking
+*Communicate privately with the garage = see messaging
+*See previous transactions
+*Add a new customer file(if the user exist) by finding the login infor 
+and connecting to the customer info then he becomes a customer
+
+Garage owner can ===>
+
+*What the unauthorized can +
+
+*Add services with a check for this type of service in system 
+*Add responses to reviews to services he offered
+*Communicate privately with the customer - see messaging
+*Request an additional service to be added to the system (subject to approval by the admin)
+*Initialize a trasaction with the customer he can choose(customer has to be in the system)
+*Search customer names(without personal info)
+*See previous transactions with his customers
+*Add new customer
+*See appointement requests
+
+Admin can ===>
+
+*What the unauthorized can +
+*Add a new customer file related to a login
+*Add a new garage file related to a login
+*See the garage add requests and approve it
+*See services add request and approve it
+*Search customer names(without personal info)
+

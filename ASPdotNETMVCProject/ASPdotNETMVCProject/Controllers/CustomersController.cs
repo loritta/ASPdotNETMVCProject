@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using ASPdotNETMVCProject.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ASPdotNETMVCProject.Controllers
 {
-   
+    [Authorize]
     public class CustomersController : Controller
     {
         //DB Context Object
@@ -22,26 +23,50 @@ namespace ASPdotNETMVCProject.Controllers
         // GET: Customers
         public ActionResult Index(string SearchString, string sort)
         {
+            var customers = _context.Customers.ToList();
             //Check for user
             string view = "ReadOnlyIndex";
-            if (User.IsInRole(RoleNames.Administrator)|| User.IsInRole(RoleNames.GarageOwner))
+            if (User.IsInRole(RoleNames.Administrator))
             {
                 view = "Index";
             }
-            var customers = _context.Customers.ToList();
+            else if (User.IsInRole(RoleNames.Customer))
+            {
+                //customers = _context.Customers.Where(c=>c.ID ==)
+                return View("CustomerForm");
+            }
+            else if (User.IsInRole(RoleNames.GarageOwner))
+            {
+                //we need to create a custom viewmodel
+            }
+
+
+           
+
+            //saving the search to view
             ViewBag.SortByName = string.IsNullOrEmpty(sort) ? "first_name_desc" : "";
             ViewBag.SortbyAddress = sort == "last_name" ? "last_name_desc" : "last_name";
 
-             if (!string.IsNullOrWhiteSpace(SearchString))
+            //searching
+            if (!string.IsNullOrWhiteSpace(SearchString))
             {
                 /* LINQ Code
                 customers = (from c in customers
                              where c.Name.Contains(SearchString)
                              select c);*/
-                customers =customers.Where(c => c.FirstName.Contains(SearchString)).ToList();
+                var searchTerms = SearchString.ToLower().Split(null);
+
+                foreach (var term in searchTerms)
+                {
+                    string tmpTerm = term;
+                    customers = customers.Where(c => c.FirstName.ToLower().Contains(SearchString) ||
+                    c.LastName.ToLower().Contains(SearchString)).ToList();
+
+                }
                 ViewBag.search = SearchString;
             }
 
+            //sorting the search
             switch (sort)
             {
                 case "first_name_desc":
@@ -58,7 +83,7 @@ namespace ASPdotNETMVCProject.Controllers
                     break;
             }
 
-            return View(view,customers);
+            return View(view, customers);
         }
         public ActionResult Details(int id)
         {
@@ -67,73 +92,79 @@ namespace ASPdotNETMVCProject.Controllers
             {
                 view = "Details";
             }
-            var customer = _context.Customers.               
+            var customer = _context.Customers.
                 SingleOrDefault(c => c.ID == id);
             if (customer == null)
                 return HttpNotFound();
             else
-                return View(view,customer);
+                return View(view, customer);
         }
-        [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
+        [Authorize]
         public ActionResult New()
         {
-           var customer = new Customer();
-           
-            return View("CustomerForm", customer);
+            var customer = new Customer();
+            //Checking the role of the user
+
+            //if it's an admin or a garage or a user who has the right to add customers
+            if (User.IsInRole(RoleNames.Customer))
+            {
+                return View("AlreadyInRole");
+            }
+            else
+            {
+                return View("CustomerForm", customer);
+            }
 
         }
 
-        [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
-           /* var currentUserId = User.Identity.GetUserId();
-            var customerInfo = _context.Customers.FirstOrDefault(d => d.ID = currentUserId);
-            if (customerInfo == null)
-            {
-                if (pasinfo == null)
-                {
-                    pasinfo = db.pas.Create();
-                    pasinfo.UserId = currentUserId;
-                    db.pas.Add(pasinfo);
-                }
 
-                pasinfo.FirstName = p.FirstName;
-                db.SaveChanges();
-            }*/  
-                if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+
                 //The form is not valid --> return same form to the user
-                
+
 
                 return View("CustomerForm", customer);
             }
+
             //******** Come here if form is valid
             if (customer.ID == 0)
             {
+                Security security = new Security();
+                security.AddUserToRole(User.Identity.GetUserName(), RoleNames.Customer);
                 _context.Customers.Add(customer);
             }
             else
             {
                 var customerInDB = _context.Customers.Single(c => c.ID == customer.ID);
 
-               
-
                 //Manually update the fields I want.
                 customerInDB.FirstName = customer.FirstName;
                 customerInDB.LastName = customer.LastName;
                 customerInDB.Address = customer.Address;
                 customerInDB.PhoneNumber = customer.PhoneNumber;
-               
-
+                Security security = new Security();
+                security.AddUserToRole(User.Identity.GetUserName(), RoleNames.Customer);
             }
-            _context.SaveChanges();
 
-            return RedirectToAction("Index", "Customers");
+            _context.SaveChanges();
+            if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+            {
+                return RedirectToAction("Index", "Customers");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
         }
 
-        [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
+        [Authorize]
         public ActionResult Edit(int Id)
         {
             var customerInDB = _context.Customers.SingleOrDefault(c => c.ID == Id);

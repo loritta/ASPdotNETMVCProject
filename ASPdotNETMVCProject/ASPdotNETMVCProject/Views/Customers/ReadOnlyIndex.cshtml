@@ -7,9 +7,7 @@
 
 <h2>Customers in our system</h2>
 
-<p>
-    @Html.ActionLink("New Customer", "CustomerForm", "Customers", null, new { @class = "btn btn-primary" })
-</p>
+
 <table class="table">
 	<tr>
 		<th>@Html.ActionLink("Customer's First Name", "Index", "Customers", new { sort = "firts_name", SearchString = ViewBag.search }, null)</th>
@@ -54,7 +52,7 @@
 				</td>
 				<td>
 
-					@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+					@Html.ActionLink("Details", "Details", new { id = item.ID }) 
 
 				</td>
 			</tr>

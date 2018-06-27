@@ -7,18 +7,18 @@
 
 <h2>Services in our system</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", "Services",null, new { @class = "btn btn-primary" })
-</p>
 <table class="table">
 	<tr>
-		<th>
+
 		<th>@Html.ActionLink("Service Title", "Index", "Services", new { sort = "name", SearchString = ViewBag.search }, null)</th>
 
 		<th>
 			@Html.DisplayNameFor(model => model.Description)
 		</th>
-		
+		<th>
+			Where it is offered
+		</th>
+
 	</tr>
 	@if (!Model.Any())
 	{
@@ -27,7 +27,7 @@
 	else
 	{
 
-		using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+		using (Html.BeginForm("Index", "Services", FormMethod.Get))
 		{
 			<p>
 				Find Service by title: @Html.TextBox("SearchString")
@@ -44,7 +44,7 @@
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
 				<td>
-					@Html.ActionLink("Garages", "Garages", new { id = item.ID }) |
+					@Html.ActionLink("Garages", "Garages", new { id = item.ID }) 
 					
 				</td>
 			</tr>

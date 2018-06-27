@@ -12,7 +12,6 @@
 </p>
 <table class="table">
 	<tr>
-		<th>
 		<th>@Html.ActionLink("Service Title", "Index", "Services", new { sort = "name", SearchString = ViewBag.search }, null)</th>
 
 		<th>
@@ -27,7 +26,7 @@
 	else
 	{
 
-		using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+		using (Html.BeginForm("Index", "Services", FormMethod.Get))
 		{
 			<p>
 				Find Service by title: @Html.TextBox("SearchString")

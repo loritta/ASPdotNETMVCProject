@@ -206,6 +206,14 @@
     <Compile Include="Migrations\201806260354171_DBcontext.Designer.cs">
       <DependentUpon>201806260354171_DBcontext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806270450100_SomeChangesToCustomers.cs" />
+    <Compile Include="Migrations\201806270450100_SomeChangesToCustomers.Designer.cs">
+      <DependentUpon>201806270450100_SomeChangesToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270456286_SomeChangesToPhoneInCustomersAndGarage.cs" />
+    <Compile Include="Migrations\201806270456286_SomeChangesToPhoneInCustomersAndGarage.Designer.cs">
+      <DependentUpon>201806270456286_SomeChangesToPhoneInCustomersAndGarage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -213,7 +221,9 @@
     <Compile Include="Models\GarageServices.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\RoleNames.cs" />
+    <Compile Include="Models\Security.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\TransactionServices.cs" />
@@ -296,6 +306,12 @@
     <Content Include="Views\Garages\ReadOnlyDetails.cshtml" />
     <Content Include="Views\Garages\ListOfServices.cshtml" />
     <Content Include="Views\Garages\Delete.cshtml" />
+    <Content Include="Views\Shared\_LayoutNonUser.cshtml" />
+    <Content Include="Views\Shared\_NavNonUser.cshtml" />
+    <Content Include="Views\Shared\_Nav.cshtml" />
+    <Content Include="Views\Shared\_NavUser.cshtml" />
+    <Content Include="Views\Customers\AlreadyInRole.cshtml" />
+    <Content Include="Views\Shared\_NavCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +335,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806260354171_DBcontext.resx">
       <DependentUpon>201806260354171_DBcontext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270450100_SomeChangesToCustomers.resx">
+      <DependentUpon>201806270450100_SomeChangesToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270456286_SomeChangesToPhoneInCustomersAndGarage.resx">
+      <DependentUpon>201806270456286_SomeChangesToPhoneInCustomersAndGarage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
