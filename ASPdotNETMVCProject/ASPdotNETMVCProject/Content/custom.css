@@ -75,3 +75,12 @@ tr:hover {
     border-color: #4b6479;
 }
 
+.search-button {
+    background-color: #e7e7e7;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+    .search-button:hover {
+        background-color: white;
+    }
