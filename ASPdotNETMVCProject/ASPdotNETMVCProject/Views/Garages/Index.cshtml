@@ -11,53 +11,53 @@
     @Html.ActionLink("New Garage", "New", "Garages", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
-	<tr>
-	<thead>
-		<tr>
-			<th>@Html.ActionLink("Garage's Name", "Index", "Garages", new { sort = "name", SearchString = ViewBag.search }, null)</th>
-			<th>@Html.ActionLink("Garage's Address", "Index", "Garages", new { sort = "address", SearchString = ViewBag.search }, null)</th>
-			<th>
-				@Html.DisplayNameFor(model => model.PhoneNumber)
-			</th>
-			<th></th>
-		</tr>
-	</thead>
+    <tr>
+    <thead>
+        <tr>
+            <th>@Html.ActionLink("Garage's Name", "Index", "Garages", new { sort = "name", SearchString = ViewBag.search }, null)</th>
+            <th>@Html.ActionLink("Garage's Address", "Index", "Garages", new { sort = "address", SearchString = ViewBag.search }, null)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
-	@if (!Model.Any())
-	{
-		<tr>There are no garages available.</tr>
-	}
-	else
-	{
+    @if (!Model.Any())
+    {
+        <tr>There are no garages available.</tr>
+    }
+    else
+    {
 
-		using (Html.BeginForm("Index", "Garages", FormMethod.Get))
-		{
-			<p>
-				Find Garage by name: @Html.TextBox("SearchString")
-				<input type="submit" value="Search" />
-			</p>
-		}
-		foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Name)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Address)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.PhoneNumber)
-				</td>
-				<td>
+        using (Html.BeginForm("Index", "Garages", FormMethod.Get))
+        {
+            <p>
+                Find Garage by name: @Html.TextBox("SearchString")
+                <input class="search-button" type="submit" value="Search" />
+            </p>
+        }
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
 
-					@Html.ActionLink("Details", "Details", new { id = item.ID }) |
-					@Html.ActionLink("Services", "Services", new { id = item.ID }) |
-					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
-				</td>
-			</tr>
-		}
-	}
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Services", "Services", new { id = item.ID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    }
 
-	</table>
+</table>

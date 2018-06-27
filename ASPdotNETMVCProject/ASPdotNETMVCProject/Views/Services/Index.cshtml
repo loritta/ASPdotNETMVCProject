@@ -8,47 +8,47 @@
 <h2>Services in our system</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", "Services",null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "Create", "Services", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
-	<tr>
-		<th>@Html.ActionLink("Service Title", "Index", "Services", new { sort = "name", SearchString = ViewBag.search }, null)</th>
+    <tr>
+        <th>@Html.ActionLink("Service Title", "Index", "Services", new { sort = "name", SearchString = ViewBag.search }, null)</th>
 
-		<th>
-			@Html.DisplayNameFor(model => model.Description)
-		</th>
-		<th></th>
-	</tr>
-	@if (!Model.Any())
-	{
-		<tr>There are no Services available.</tr>
-	}
-	else
-	{
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+    @if (!Model.Any())
+    {
+        <tr>There are no Services available.</tr>
+    }
+    else
+    {
 
-		using (Html.BeginForm("Index", "Services", FormMethod.Get))
-		{
-			<p>
-				Find Service by title: @Html.TextBox("SearchString")
-				<input type="submit" value="Search" />
-			</p>
-		}
-		foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Title)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Description)
-				</td>
-				<td>
-					@Html.ActionLink("Garages", "Garages", new { id = item.ID }) |
-					@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-					@Html.ActionLink("Delete", "Delete", new { id = item.ID })
-				</td>
-			</tr>
-		}
-	}
+        using (Html.BeginForm("Index", "Services", FormMethod.Get))
+        {
+            <p>
+                Find Service by title: @Html.TextBox("SearchString")
+                <input class="search-button" type="submit" value="Search" />
+            </p>
+        }
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Garages", "Garages", new { id = item.ID }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    }
 
-	</table>
+</table>
