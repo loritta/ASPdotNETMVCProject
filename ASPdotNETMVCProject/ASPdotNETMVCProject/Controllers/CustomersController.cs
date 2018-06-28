@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASPdotNETMVCProject.Models;
+using ASPdotNETMVCProject.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -14,13 +15,15 @@ namespace ASPdotNETMVCProject.Controllers
     {
         //DB Context Object
         private ApplicationDbContext _context;
-
+        private Security security;
         //class Constructor
         public CustomersController()
         {
             _context = new ApplicationDbContext();
+            security = new Security();
         }
         // GET: Customers
+        [Authorize(Roles = RoleNames.AdministratorGarageOwnerCustomer)]
         public ActionResult Index(string SearchString, string sort)
         {
             var customers = _context.Customers.ToList();
@@ -32,7 +35,7 @@ namespace ASPdotNETMVCProject.Controllers
             }
             else if (User.IsInRole(RoleNames.Customer))
             {
-                view ="CustomerForm";
+                view = "CustomerForm";
             }
             else if (User.IsInRole(RoleNames.GarageOwner))
             {
@@ -82,6 +85,7 @@ namespace ASPdotNETMVCProject.Controllers
 
             return View(view, customers);
         }
+        [Authorize(Roles = RoleNames.AdministratorGarageOwnerCustomer)]
         public ActionResult Details(int id)
         {
             string view = "ReadOnlyDetails";
@@ -99,87 +103,162 @@ namespace ASPdotNETMVCProject.Controllers
         [Authorize]
         public ActionResult New()
         {
-            var customer = new Customer();
-            //Checking the role of the user
-
-            //if it's an admin or a garage or a user who has the right to add customers
-            if (User.IsInRole(RoleNames.Customer))
-            {
-                return View("AlreadyInRole");
-            }
+            var customerToReturn = new Customer();
+            var form = "CustomerFormUser";
+            
             if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
             {
-                return View("CustomerForm", customer);
+                form = "CustomerForm";
+                 var viewModel = new CustomerUserViewModel()
+                {
+                    Customer = new Customer(),
+
+                    ApplicationUser = _context.Users.SingleOrDefault(c => c.Id == customerToReturn.ApplicationUserId)
+                };
+                return View(form, viewModel);
+            }
+            else if (User.IsInRole(RoleNames.Customer))
+            {
+                form = "AlreadyInRole";
+                return View(form);
             }
             else
             {
-                return View("CustomerFormUser", customer);
+                return View(form);
             }
-
+           
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Customer customer)
+        public ActionResult SaveCustomer(Customer customer)
         {
-            Security security = new Security();
             if (!ModelState.IsValid)
             {
-
                 //The form is not valid --> return same form to the user
 
 
-                return View("CustomerForm", customer);
+                return View("CustomerFormCustomer", customer);
             }
+            //******** Come here if form is valid
+           
+                var customerInDB = _context.Customers.Single(g => g.ID == customer.ID);
 
+
+
+            //Manually update the fields I want.
+            customerInDB.FirstName = customer.FirstName;
+            customerInDB.LastName = customer.LastName;
+            customerInDB.Address = customer.Address;
+            customerInDB.PhoneNumber = customer.PhoneNumber;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+   
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Customer customer)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                var form = "CustomerFormUser";
+                if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner) || User.IsInRole(RoleNames.Customer))
+                {
+                    form = "CustomerForm";
+                    var viewModel = new CustomerUserViewModel()
+                    {
+                        Customer = customer,
+
+                        ApplicationUser = _context.Users.SingleOrDefault(c => c.Id == customer.ApplicationUserId)
+                    };
+                    return View(form, viewModel);
+                }
+                else
+                {
+                    return View(form);
+                }
+            }
+           
+            var currentUserID = User.Identity.GetUserId();
+            var userIsCustomer = _context.Customers.SingleOrDefault(c => c.ApplicationUserId == currentUserID);
+            var userIsGarage = _context.Garages.SingleOrDefault(c => c.ApplicationUserId == currentUserID);
+            var objectIsCustomer = _context.Customers.SingleOrDefault(c => c.ApplicationUserId == customer.ApplicationUserId);
+            var objectIsGarage = _context.Garages.SingleOrDefault(c => c.ApplicationUserId == customer.ApplicationUserId);
+            var userExists = _context.Users.SingleOrDefault(u => u.Id == customer.ApplicationUserId);
             //******** Come here if form is valid
             if (customer.ID == 0)
             {
-                if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+                //user is a Customer already
+                if (User.IsInRole(RoleNames.Customer))
                 {
-                    //a customer cannot be a garage in the same time
-                    //if not registered then
-                    if (_context.Customers.Where(c => c.ApplicationUserId == customer.ApplicationUserId) == null
-                        ||
-                        _context.Garages.Where(c => c.ApplicationUserId == customer.ApplicationUserId)==null)
+                    return View("AlreadyInRoleGeneral");
+                }
+                else
+                {
+                    //checking if the user has a role, a customer cannot be a garage in the same time
+                    
+
+                    if ((objectIsGarage == null || objectIsCustomer == null) && userExists!= null)
                     {
                         security.AddUserToRole(customer.ApplicationUserId, RoleNames.Customer);
+
                         _context.Customers.Add(customer);
                     }
-                    //if there is no userID on the file matching ther one returned from the form
-                    else if(_context.Users.Where(u=>u.Id == customer.ApplicationUserId) == null)
+                    else if (userIsCustomer == null || userIsGarage == null)
+                       
+                        //&&
+                        //_context.Users.SingleOrDefault(u => u.Id == User.Identity.GetUserId()) != null
+                    {
+                        security.AddUserToRole(currentUserID, RoleNames.Customer);
+                        customer.ApplicationUserId = currentUserID;
+
+                        _context.Customers.Add(customer);
+                    }
+
+                    //if there is no userID on the file matching the one returned from the form
+
+                    else if (_context.Users.SingleOrDefault(u => u.Id == customer.ApplicationUserId) == null)
                     {
                         return View("NeedToRegisterBefore");
                     }
-                    //if it's a user not registered as cutomer/admin/garage
-                    else if(_context.Users.Where(u=>u.Id == User.Identity.GetUserId())!=null && !User.IsInRole(RoleNames.AdministratorGarageOwnerCustomer))
-                    {
-                        security.AddUserToRole(User.Identity.GetUserId(), RoleNames.Customer);
-                        _context.Customers.Add(customer);
-                    }
+
                     //there is a user with this UserID in the customers or garage role
                     else
                     {
                         return View("AlreadyInRoleGeneral");
                     }
                 }
-                 
+
             }
             //needs to be finished
             else
             {
                 var customerInDB = _context.Customers.Single(c => c.ID == customer.ID);
-
-                //Manually update the fields I want.
-                customerInDB.FirstName = customer.FirstName;
-                customerInDB.LastName = customer.LastName;
-                customerInDB.Address = customer.Address;
-                customerInDB.PhoneNumber = customer.PhoneNumber;
-                if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+                if (User.IsInRole(RoleNames.Customer))
                 {
+                    //Manually update the fields I want.
+                    customerInDB.FirstName = customer.FirstName;
+                    customerInDB.LastName = customer.LastName;
+                    customerInDB.Address = customer.Address;
+                    customerInDB.PhoneNumber = customer.PhoneNumber;
                     customerInDB.ApplicationUserId = User.Identity.GetUserId();
-                    security.AddUserToRole(User.Identity.GetUserName(), RoleNames.Customer);
+                    security.AddUserToRole(currentUserID, RoleNames.Customer);
+                }
+                else if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
+                {
+                    var UserId = _context.Users.SingleOrDefault(c => c.Id == customer.ApplicationUserId);
+                    //Manually update the fields I want.
+                    customerInDB.FirstName = customer.FirstName;
+                    customerInDB.LastName = customer.LastName;
+                    customerInDB.Address = customer.Address;
+                    customerInDB.PhoneNumber = customer.PhoneNumber;
+                    customerInDB.ApplicationUserId = customer.ApplicationUserId;
+                    security.AddUserToRole(customer.ApplicationUserId, RoleNames.Customer);
                 }
 
             }
@@ -197,9 +276,10 @@ namespace ASPdotNETMVCProject.Controllers
         }
 
         [Authorize(Roles = RoleNames.AdministratorGarageOwnerCustomer)]
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int? Id)
         {
-            var customerInDB = _context.Customers.SingleOrDefault(c => c.ApplicationUserId == User.Identity.GetUserId());
+            var currentUserID = User.Identity.GetUserId();
+            var customerInDB = _context.Customers.SingleOrDefault(c => c.ApplicationUserId == currentUserID);
             if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
             {
                 customerInDB = _context.Customers.SingleOrDefault(c => c.ID == Id);
@@ -208,7 +288,7 @@ namespace ASPdotNETMVCProject.Controllers
             if (customerInDB == null)
                 return HttpNotFound();
 
-            return View("CustomerForm", customerInDB);
+            return View("CustomerFormCustomer", customerInDB);
         }
 
         [Authorize(Roles = RoleNames.AdministratorGarageOwner)]

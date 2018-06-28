@@ -19,8 +19,7 @@ namespace ASPdotNETMVCProject.Models
 
             try
             {
-                var user = UserManager.FindByName(userName);
-                UserManager.AddToRole(user.Id, roleName);
+                UserManager.AddToRole(userName, roleName);
                 _context.SaveChanges();
             }
             catch
