@@ -23,7 +23,7 @@ namespace ASPdotNETMVCProject.Controllers
             security = new Security();
         }
         // GET: Customers
-        [Authorize(Roles = RoleNames.AdministratorGarageOwnerCustomer)]
+        [Authorize(Roles = RoleNames.AdministratorGarageOwner)]
         public ActionResult Index(string SearchString, string sort)
         {
             var customers = _context.Customers.ToList();
