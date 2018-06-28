@@ -153,6 +153,7 @@ namespace ASPdotNETMVCProject.Controllers
             customerInDB.Address = customer.Address;
             customerInDB.PhoneNumber = customer.PhoneNumber;
 
+            Session["customerLoggedIn"] = customer;
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");

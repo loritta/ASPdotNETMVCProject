@@ -12,5 +12,15 @@ namespace ASPdotNETMVCProject.Models
         public Customer Customer { get; set; }
         public int CustomerID { get; set; }
 
+        public Garage Garage { get; set; }
+        public int GarageID { get; set; }
+
+        public string Title { get; set; }
+        public string Contents { get; set; }
+        /*1
+         * 2 message link
+         */
+
+
     }
 }

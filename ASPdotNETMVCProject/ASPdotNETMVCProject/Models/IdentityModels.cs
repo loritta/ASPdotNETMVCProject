@@ -26,7 +26,7 @@ namespace ASPdotNETMVCProject.Models
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionServices> TransactionServices { get; set; }
         public DbSet<GarageServices> GarageServices { get; set; }
-
+        public DbSet<Message> Messages { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

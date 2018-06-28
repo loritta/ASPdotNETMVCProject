@@ -618,3 +618,6 @@ C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdot
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToCustomers.resources
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToPhoneInCustomersAndGarage.resources
 C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.FKInCustomersAndGaragesToApplicationUser.resources
+E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToCustomers.resources
+E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToPhoneInCustomersAndGarage.resources
+E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.FKInCustomersAndGaragesToApplicationUser.resources
