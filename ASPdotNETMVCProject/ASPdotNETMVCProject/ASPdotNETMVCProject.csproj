@@ -325,6 +325,8 @@
     <Content Include="Views\Customers\NeedToProvideUserName.cshtml" />
     <Content Include="Views\Customers\CustomerFormUser.cshtml" />
     <Content Include="Views\Customers\CustomerFormCustomer.cshtml" />
+    <Content Include="Views\Garages\GarageFormUser.cshtml" />
+    <Content Include="Views\Shared\_NavGarage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

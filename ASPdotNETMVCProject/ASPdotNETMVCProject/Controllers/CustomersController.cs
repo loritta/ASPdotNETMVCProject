@@ -158,7 +158,7 @@ namespace ASPdotNETMVCProject.Controllers
             return RedirectToAction("Index", "Home");
         }
    
-        [Authorize]
+        [Authorize(Roles = RoleNames.Administrator)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)

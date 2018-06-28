@@ -9,19 +9,26 @@
 
 </head>
 <body>
-	@if (this.User.IsInRole("CanManageTheWebSite") || this.User.IsInRole("CanManageGarageInfo"))
+	@if (this.User.IsInRole("CanManageTheWebSite"))
 	{
 		@Html.Partial("_Nav");
-	}
-	else if (!this.User.Identity.IsAuthenticated)
-	{
-		@Html.Partial("_NavNonUser");
 	}
 
 	else if (this.User.IsInRole("CanManageCustomerInfo"))
 	{
 		@Html.Partial("_NavCustomer");
 	}
+
+	else if (this.User.IsInRole("CanManageGarageInfo"))
+	{
+		@Html.Partial("_NavGarage");
+	}
+
+	else if (!this.User.Identity.IsAuthenticated)
+	{
+		@Html.Partial("_NavNonUser");
+	}
+
 	else
 	{
 		@Html.Partial("_NavUser");
