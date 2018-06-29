@@ -1,18 +1,16 @@
 ﻿@model ASPdotNETMVCProject.ViewModels.ServicesInGarageViewModel
 
 @{
-				/**/
-
-				ViewBag.Title = "GarageForm";
-				Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "GarageFormUser";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>GarageForm</h2>
-@if (this.User.IsInRole("CanManageCustomerInfo"))
+@if (this.User.IsInRole("CanManageGarageInfo"))
 {
 	<div class="jumbotron">
-		<h1>You are a customer</h1>
-		<p class="lead">Congratulation you are already a customer. You cannot be more customer then you are already!</p>
+		<h1>You are a registered garage</h1>
+		<p class="lead">Congratulation you are already a registered as garage. You cannot register twice!</p>
 	</div>
 }
 else
@@ -29,7 +27,7 @@ else
 			<div class="form-group">
 				@Html.LabelFor(model => model.Garage.Name, htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
-					@Html.EditorFor(model => model.Garage.Name, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.TextBoxFor(model => model.Garage.Name, new { htmlAttributes = new { @class = "form-control" } })
 					@Html.ValidationMessageFor(model => model.Garage.Name, "", new { @class = "text-danger" })
 				</div>
 			</div>
@@ -37,32 +35,48 @@ else
 			<div class="form-group">
 				@Html.LabelFor(model => model.Garage.Address, htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
-					@Html.EditorFor(model => model.Garage.Address, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.TextBoxFor(model => model.Garage.Address, new { htmlAttributes = new { @class = "form-control" } })
 					@Html.ValidationMessageFor(model => model.Garage.Address, "", new { @class = "text-danger" })
 				</div>
 			</div>
-
 			<div class="form-group">
 				@Html.LabelFor(model => model.Garage.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
 				<div class="col-md-10">
-					@Html.EditorFor(model => model.Garage.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.TextBoxFor(model => model.Garage.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
 					@Html.ValidationMessageFor(model => model.Garage.PhoneNumber, "", new { @class = "text-danger" })
 				</div>
 			</div>
-			@foreach (var item in Model.Services)
-			{
-				<input data-val="true"
-					   id=""
-					   name="service"
-					   type="checkbox"
-					   value="@item.Title" />@item.Title
-					<input data-val="true"
-						   id=""
-						   name="service"
-						   type="checkbox"
-						   value="@item.Description" />@item.Description
-						<br />
-			}
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Please choose</th>
+						<th>Service</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				@foreach (var item in Model.Services)
+				{
+
+					<tr>
+						<td>
+							<input data-val="true"
+								   id=""
+								   name="service"
+								   type="checkbox"
+								   value="@item.Title" />
+						</td>
+						<td>
+							@item.Title
+						</td>
+						<td>
+							@item.Description
+
+						</td>
+					</tr>
+				}
+			</table>
 
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-10">
@@ -73,10 +87,10 @@ else
 		</div>
 	}
 }
-	<div>
-		@Html.ActionLink("Back to List", "Index")
-	</div>
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
 
-	@section Scripts {
-		@Scripts.Render("~/bundles/jqueryval")
-	}
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

@@ -11,7 +11,7 @@
 	</li>
 	@if (this.User.IsInRole("CanManageTheWebSite") || this.User.IsInRole("CanManageCustomerInfo") || this.User.IsInRole("CanManageGarageInfo"))
 	{
-	<li>@Html.ActionLink("Messages", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+	<li>@Html.ActionLink("Messages", "Index", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 	}
 	<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 </ul>

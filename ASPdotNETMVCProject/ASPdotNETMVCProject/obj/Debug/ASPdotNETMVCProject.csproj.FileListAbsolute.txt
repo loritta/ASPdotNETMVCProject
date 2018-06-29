@@ -621,3 +621,4 @@ C:\Users\Matthew\Documents\GitHub\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdot
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToCustomers.resources
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToPhoneInCustomersAndGarage.resources
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.FKInCustomersAndGaragesToApplicationUser.resources
+B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.resources

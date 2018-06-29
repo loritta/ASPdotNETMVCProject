@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201806271704391_FKInCustomersAndGaragesToApplicationUser.Designer.cs">
       <DependentUpon>201806271704391_FKInCustomersAndGaragesToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806290124175_SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.cs" />
+    <Compile Include="Migrations\201806290124175_SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.Designer.cs">
+      <DependentUpon>201806290124175_SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806271704391_FKInCustomersAndGaragesToApplicationUser.resx">
       <DependentUpon>201806271704391_FKInCustomersAndGaragesToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806290124175_SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.resx">
+      <DependentUpon>201806290124175_SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

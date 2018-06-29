@@ -110,19 +110,15 @@ namespace ASPdotNETMVCProject.Controllers
         public ActionResult New()
         {
             var form = "GarageFormUser";
-
+            var viewModel = new ServicesInGarageViewModel()
+            {
+                Garage = new Garage(),
+                Services = _context.Services.ToList()
+            };
             if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
             {
-                form = "CustomerForm";
-                var viewModel = new ServicesInGarageViewModel()
-                {
-                    Garage = new Garage(),
-                    Services = (from data in _context.Garages
-                                join data2 in _context.GarageServices on data.ID equals data2.GarageID
-                                join data3 in _context.Services on data2.ServiceID equals data3.ID
-                                select data3).ToList()
-
-                };
+                form = "GarageForm";
+                
 
                 return View(form, viewModel);
             }
@@ -133,10 +129,10 @@ namespace ASPdotNETMVCProject.Controllers
             }
             else
             {
-                return View(form);
+                return View(form, viewModel);
             }
         }
-        [Authorize(Roles = RoleNames.Administrator)]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Garage garage)
@@ -151,10 +147,7 @@ namespace ASPdotNETMVCProject.Controllers
                     var viewModel = new ServicesInGarageViewModel()
                     {
                         Garage = garage,
-                        Services = (from data in _context.Garages
-                                    join data2 in _context.GarageServices on data.ID equals data2.GarageID
-                                    join data3 in _context.Services on data2.ServiceID equals data3.ID
-                                    select data3).ToList()
+                        Services = _context.Services.ToList()
 
                     };
                     return View(form, viewModel);
@@ -217,15 +210,15 @@ namespace ASPdotNETMVCProject.Controllers
             else
             {
                 var garageInDB = _context.Garages.Single(g => g.ID == garage.ID);
-                
-                    var UserId = _context.Users.SingleOrDefault(c => c.Id == garage.ApplicationUserId);
-                    //Manually update the fields I want.
-                    garageInDB.Name = garage.Name;
-                    garageInDB.Address = garage.Address;
-                    garageInDB.PhoneNumber = garage.PhoneNumber;
-                    garageInDB.ApplicationUserId = garage.ApplicationUserId;
-                    security.AddUserToRole(garage.ApplicationUserId, RoleNames.GarageOwner);
-            
+
+                var UserId = _context.Users.SingleOrDefault(c => c.Id == garage.ApplicationUserId);
+                //Manually update the fields I want.
+                garageInDB.Name = garage.Name;
+                garageInDB.Address = garage.Address;
+                garageInDB.PhoneNumber = garage.PhoneNumber;
+                garageInDB.ApplicationUserId = garage.ApplicationUserId;
+                security.AddUserToRole(garage.ApplicationUserId, RoleNames.GarageOwner);
+
             }
             _context.SaveChanges();
             if (User.IsInRole(RoleNames.Administrator) || User.IsInRole(RoleNames.GarageOwner))
@@ -243,11 +236,21 @@ namespace ASPdotNETMVCProject.Controllers
         {
             var currentUserID = User.Identity.GetUserId();
             var garageInDB = _context.Garages.SingleOrDefault(c => c.ApplicationUserId == currentUserID);
-           
+            var form = "GarageForm";
+
             if (garageInDB == null)
                 return HttpNotFound();
 
-            return View("GarageForm", garageInDB);
+
+            var viewModel = new ServicesInGarageViewModel()
+            {
+                Garage = garageInDB,
+                Services = _context.Services.ToList()
+
+            };
+
+            return View(form, viewModel);
+
         }
 
         [Authorize(Roles = RoleNames.Administrator)]
@@ -274,5 +277,4 @@ namespace ASPdotNETMVCProject.Controllers
             return RedirectToAction("Index");
         }
     }
-}
 }

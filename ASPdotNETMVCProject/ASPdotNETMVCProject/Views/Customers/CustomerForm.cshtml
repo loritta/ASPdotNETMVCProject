@@ -25,34 +25,34 @@ else
 		<hr />
 		@Html.ValidationSummary(true, "Please fix the errors")
 		<div class="form-group">
-			@Html.LabelFor(model => model., htmlAttributes: new { @class = "control-label col-md-2" })
+			@Html.LabelFor(model => model.Customer.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
 
-			@Html.TextBoxFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-
-		</div>
-
-		<div class="form-group">
-			@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-
-			@Html.TextBoxFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+			@Html.TextBoxFor(model => model.Customer.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Customer.FirstName, "", new { @class = "text-danger" })
 
 		</div>
 
 		<div class="form-group">
-			@Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+			@Html.LabelFor(model => model.Customer.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
 
-			@Html.TextBoxFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+			@Html.TextBoxFor(model => model.Customer.LastName, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Customer.LastName, "", new { @class = "text-danger" })
 
 		</div>
 
 		<div class="form-group">
-			@Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+			@Html.LabelFor(model => model.Customer.Address, htmlAttributes: new { @class = "control-label col-md-2" })
 
-			@Html.TextBoxFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+			@Html.TextBoxFor(model => model.Customer.Address, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Customer.Address, "", new { @class = "text-danger" })
+
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Customer.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+
+			@Html.TextBoxFor(model => model.Customer.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Customer.PhoneNumber, "", new { @class = "text-danger" })
 
 		</div>
 		<div class="form-group">
@@ -65,7 +65,10 @@ else
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				@Html.HiddenFor(model => model.ID)
+				@if (Model.Customer.ID != 0) {
+					@Html.HiddenFor(model => model.Customer.ID)
+				}
+
 				<input type="submit" value="Save" class="btn btn-default" />
 			</div>
 		</div>

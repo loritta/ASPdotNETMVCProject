@@ -39,20 +39,35 @@
                 @Html.ValidationMessageFor(model => model.Garage.PhoneNumber, "", new { @class = "text-danger" })
             </div>
         </div>
-        @foreach (var item in Model.Services)
-        {
-            <input data-val="true"
-                   id=""
-                   name="service"
-                   type="checkbox"
-                   value="@item.Title" />@item.Title
-                <input data-val="true"
-                       id=""
-                       name="service"
-                       type="checkbox"
-                       value="@item.Description" />@item.Description
-                    <br />
-                }
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Please choose</th>
+					<th>Service</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			@foreach (var item in Model.Services)
+	{
+
+		<tr>
+			<td>
+				<input data-val="true"
+					   id=""
+					   name="service"
+					   type="checkbox"
+					   value="@item.Title" />
+			</td>
+			<td>
+				@item.Title
+			</td>
+			<td>
+				@item.Description
+
+			</td>
+		</tr>
+}
+		</table>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
