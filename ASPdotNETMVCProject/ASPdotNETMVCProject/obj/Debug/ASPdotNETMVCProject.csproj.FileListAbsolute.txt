@@ -622,3 +622,4 @@ E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\De
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeChangesToPhoneInCustomersAndGarage.resources
 E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.FKInCustomersAndGaragesToApplicationUser.resources
 B:\Larisa\ASPdotNET\ASPdotNETMVCProject\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.resources
+E:\John Abbott College\ASPPROJECT\ASPdotNETMVCProject\ASPdotNETMVCProject\obj\Debug\ASPdotNETMVCProject.Migrations.SomeWeirdThingThatWasNotUpdatedMigrationDoneByLarisa.resources
